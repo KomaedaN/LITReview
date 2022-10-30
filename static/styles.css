@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+}
+
+.nav-grid {
+    display: grid;
+    grid-template-columns: 4fr 4fr;
+    gap: 0px 00px;
+    height: 5em;
+    justify-items: end;
+    align-items: center;
+    border: 0.1rem solid;
+}
+
+.nav-margin-right {
+    margin-right: 2.5rem;
+}
