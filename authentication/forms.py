@@ -5,8 +5,9 @@ from . import models
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=25, label="Nom d'utilisateur")
-    password = forms.CharField(max_length=100, widget=forms.PasswordInput, label='Mot de passe')
-
-
-
+    username = forms.CharField(max_length=25, label='',
+                               widget=forms.TextInput(attrs={'placeholder': "Nom d'utilisateur",
+                                                             'class': "login_form"}))
+    password = forms.CharField(max_length=100, label='',
+                               widget=forms.PasswordInput(attrs={'placeholder': 'Mot de passe',
+                                                                 'class': "login_form"}))

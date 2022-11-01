@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Se connecter</h1>
-<p>{{ message }}</p>
-<form method="post">
-    {{ form.as_p }}
-    {% csrf_token %}
-    <button type="submit" >Se connecter</button>
-    <p>Pas encore membre ?</p>
-</form>
+<section class="login_grid">
+    <div>
+        <h2>Inscrivez-vous maintenant</h2>
+        <button>S'inscrire </button>
+    </div>
+
+    <div>
+        <h2>Connectez-vous</h2>
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit" >Se connecter</button>
+        </form>
+    </div>
+</section>
 {% endblock content %}

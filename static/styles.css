@@ -2,10 +2,13 @@ body{
     margin: 0;
 }
 
+input {
+    text-align: center;
+}
+
 .nav-grid {
     display: grid;
     grid-template-columns: 4fr 4fr;
-    gap: 0px 00px;
     height: 5em;
     justify-items: end;
     align-items: center;
@@ -15,3 +18,18 @@ body{
 .nav-margin-right {
     margin-right: 2.5rem;
 }
+
+.login_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.login_form {
+    width: 25rem;
+    height: 1.8rem;
+    text-align: center;
+}
+
