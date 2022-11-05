@@ -11,3 +11,9 @@ class LoginForm(forms.Form):
     password = forms.CharField(max_length=100, label='',
                                widget=forms.PasswordInput(attrs={'placeholder': 'Mot de passe',
                                                                  'class': "login_form"}))
+
+
+class SignupForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = get_user_model()
+        fields = ('username',)
