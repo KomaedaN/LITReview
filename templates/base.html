@@ -6,9 +6,10 @@
     </head>
     <body>
     <nav class="nav-grid">
-        <h1>LITReview</h1>
+        <div></div>
+        <h1 class="base_title">LITReview</h1>
         {% if user.is_authenticated %}
-        <div>
+        <div class="base_nav">
             <a class="nav-margin-right">Flux</a>
             <a class="nav-margin-right">Posts</a>
             <a class="nav-margin-right">Abonnements</a>
@@ -16,7 +17,6 @@
         </div>
         {% endif %}
     </nav>
-
-        {% block content %}{% endblock content %}
+    {% block content %}{% endblock content %}
     </body>
 </html>

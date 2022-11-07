@@ -6,17 +6,28 @@ input {
     text-align: center;
 }
 
+.base_title{
+    text-align: center;
+}
+
+.base_nav {
+    text-align: end;
+}
+
 .nav-grid {
     display: grid;
-    grid-template-columns: 4fr 4fr;
+    grid-template-columns: 4fr 4fr 4fr;
     height: 5em;
-    justify-items: end;
     align-items: center;
     border: 0.1rem solid;
 }
 
 .nav-margin-right {
     margin-right: 2.5rem;
+}
+
+.login {
+    text-align: end;
 }
 
 .login_grid {
@@ -43,9 +54,55 @@ input {
     border: solid 2px;
     margin-top: 2rem;
     padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .home_time {
     display: flex;
     justify-content: space-between;
+}
+
+.home_btn_grid{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 4fr 4fr;
+    justify-items: center;
+}
+
+.home_btn {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+.signup_grid{
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 1fr;
+    word-break: break-word;
+    text-align: center;
+}
+
+.create_ticket_section {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    word-break: break-word;
+}
+
+.create_ticket_forms {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.create_ticket_forms_title {
+    height: 2rem;
+    text-align: start;
+}
+
+.create_ticket_title{
+    text-align: center;
+}
+
+.align_end {
+    text-align: end;
 }

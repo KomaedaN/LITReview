@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="create_ticket_title">Créer une critique</h2>
+<section class="create_ticket_section">
+    <div></div>
+    <form class="create_ticket_content" method="post" enctype="multipart/form-data">
+        {{ ticket_form.as_p }}
+        {{ review_form.as_p }}
+        {% csrf_token %}
+        <div class="align_end">
+            <a href="{% url 'home' %}"><button type="button">Retour</button></a>
+            <button type="submit" >Publier</button>
+        </div>
+    </form>
+    <div></div>
+</section>
+
+{% endblock content %}

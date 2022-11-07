@@ -3,12 +3,14 @@
 <section class="login_grid">
     <div>
         <h2>Inscrivez-vous maintenant</h2>
-        <button>S'inscrire </button>
+        <a href="{% url 'signup' %}">
+            <button>S'inscrire </button>
+        </a>
     </div>
 
     <div>
         <h2>Connectez-vous</h2>
-        <form method="post">
+        <form method="post" class="login">
             {{ form.as_p }}
             {% csrf_token %}
             <button type="submit" >Se connecter</button>

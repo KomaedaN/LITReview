@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div>
-        <h2>Inscription</h2>
-        <form method="post">
-            {{ form.as_p }}
-            {% csrf_token %}
-            <button type="submit" >s'inscrire</button>
-        </form>
-    </div>
+    <section class="signup_grid">
+        <div></div>
+        <div>
+            <h2>Inscription</h2>
+            <form method="post">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <a href="{% url 'login' %}"><button type="button">Retour</button></a>
+                <button type="submit" >s'inscrire</button>
+            </form>
+        </div>
+        <div></div>
+    </section>
 {% endblock content %}

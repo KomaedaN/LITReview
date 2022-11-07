@@ -5,6 +5,10 @@
     <div></div>
 
     <div class="home_template">
+        <div class="home_btn_grid">
+            <a href="{% url 'create_ticket' %}"><button class="home_btn">Demander une critique</button></a>
+            <a href="{% url 'create_review' %}"><button class="home_btn">Créer une critique</button></a>
+        </div>
         {% for tickets in ticket %}
         <div class="home_review">
             <div class="home_time">
