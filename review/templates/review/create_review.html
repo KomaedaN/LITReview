@@ -3,13 +3,20 @@
 <h2 class="create_ticket_title">Créer une critique</h2>
 <section class="create_ticket_section">
     <div></div>
-    <form class="create_ticket_content" method="post" enctype="multipart/form-data">
-        {{ ticket_form.as_p }}
+    <form class="create_review_content" method="post" enctype="multipart/form-data">
+        <div>
+            <h2>Livre / Article</h2>
+            {{ ticket_form.as_p }}
+        </div>
+
+        <div class="create_review_review">
+        <h2>Critique</h2>
         {{ review_form.as_p }}
         {% csrf_token %}
         <div class="align_end">
             <a href="{% url 'home' %}"><button type="button">Retour</button></a>
             <button type="submit" >Publier</button>
+        </div>
         </div>
     </form>
     <div></div>

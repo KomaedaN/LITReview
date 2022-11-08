@@ -106,3 +106,19 @@ input {
 .align_end {
     text-align: end;
 }
+
+.create_review_content {
+    border: solid;
+    padding: 1rem;
+}
+
+.create_review_review{
+    border-top: solid;
+}
+
+.ul_review {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    justify-content: space-evenly;
+}
