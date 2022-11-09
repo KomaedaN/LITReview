@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2 class="create_ticket_title">Créer un ticket</h2>
+<section class="create_ticket_section">
+    <div></div>
+    <div>
+        <form class="create_ticket_content" method="post" enctype="multipart/form-data">
+            {{ edit_form.as_p }}
+            {% csrf_token %}
+            <div class="align_end">
+                <a href="{% url 'home' %}"><button type="button">Retour</button></a>
+                <button type="submit" >Publier</button>
+            </div>
+        </form>
+
+        <h3>Supprimer le ticket</h3>
+        <form method="post">
+            {{ delete_form }}
+            {% csrf_token %}
+            <button type="submit">Supprimer</button>
+        </form>
+    </div>
+    <div></div>
+</section>
+
+{% endblock content %}

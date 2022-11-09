@@ -12,4 +12,7 @@ urlpatterns = [
     path('home/', review.views.home, name='home'),
     path('ticket/upload/', review.views.ticket_upload, name='create_ticket'),
     path('review/upload/', review.views.review_upload, name='create_review'),
+    path('ticket/<int:ticket_id>', review.views.view_ticket, name='view_ticket'),
+    path('ticket/<int:ticket_id>/edit_ticket', review.views.edit_ticket, name='edit_ticket'),
+    path('subscription/', review.views.follow_users, name='subscription'),
 ]

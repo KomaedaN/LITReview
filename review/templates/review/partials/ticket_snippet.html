@@ -1,0 +1,15 @@
+<a href="{% url 'view_ticket' tickets.id %}" class="link_decoration">
+    <div class="home_review">
+        <div class="home_time">
+            <h2>{{ tickets.user }} a demandé une critique</h2>
+            <p>{{ tickets.time_created }}</p>
+        </div>
+        <h2>{{ tickets.title }}</h2>
+        {% if tickets.description %}
+            <h2>{{ tickets.description }}</h2>
+        {% endif %}
+        {% if tickets.image %}
+            <img src="{{ tickets.image }}" alt="bug">
+        {% endif %}
+    </div>
+</a>

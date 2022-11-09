@@ -122,3 +122,12 @@ input {
     padding: 0;
     justify-content: space-evenly;
 }
+
+.link_decoration {
+    text-decoration: none;
+    color: black;
+}
+
+.ticket_title {
+    text-align: center;
+}

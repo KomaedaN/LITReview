@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="ticket_title">Ticket</h1>
+<section class="home_section">
+    <div></div>
+    <div>
+        <div class="home_review">
+            <div class="home_time">
+                <h2>{{ ticket.user }} a demandé une critique</h2>
+                <p>{{ ticket.time_created }}</p>
+            </div>
+            <h2>{{ ticket.title }}</h2>
+            {% if ticket.description %}
+                <h2>{{ ticket.description }}</h2>
+            {% endif %}
+            {% if ticket.image %}
+                <img src="{{ ticket.image }}" alt="bug">
+            {% endif %}
+        </div>
+        <a href="{% url 'home' %}"><button type="button">Retour</button></a>
+        {% if user == ticket.user %}
+            <a href="{% url 'edit_ticket' ticket.id %}"><button type="button">Modifier</button></a>
+        {% endif %}
+    </div>
+    <div></div>
+</section>
+{% endblock content %}
