@@ -1,10 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
+<section class="subscription_page">
+    <div></div>
+    <div class="subscription_content">
+        <h1 class="subscription_title">Ajouter un utilisateur</h1>
+        <form method="post" class="subscription_form">
+        {{ form.as_p }}
+        {% csrf_token %}
+            <button type="submit" class="subscription_btn">Suivre</button>
+        </form>
 
-    <h1>ZZZ</h1>
-    <form method="post">
-    {{ form.as_p }}
-    {% csrf_token %}
-        <button type="submit">go</button>
-    </form>
+        <h2 class="subscription_title">Abonnements</h2>
+        {% for follow in follows %}
+        <div class="subscription_follow">
+            <h1 class="subscription_follow_title">{{ follow.followed_user }}</h1>
+            <a href="{% url 'unfollow' follow.id %}">
+                <button type="button">Supprimer</button>
+            </a>
+
+        </div>
+        {% endfor %}
+
+        <h2 class="subscription_title">Abonnés</h2>
+        {% for subscribers in subscriber %}
+        <div class="subscription_follow">
+            <h1>{{ subscribers.user }}</h1>
+        </div>
+        {% endfor %}
+
+        <h1>{{ message }}</h1>
+    </div>
+    <div></div>
+
+</section>
 {% endblock content %}

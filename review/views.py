@@ -3,7 +3,9 @@ from django.contrib.auth.decorators import login_required
 from . import forms, models
 from itertools import chain
 from django.db.models import CharField, Value
-from authentication.models import UserFollows
+from authentication.models import UserFollows, User
+from django.db import IntegrityError
+
 
 @login_required
 def home(request):
@@ -81,6 +83,7 @@ def edit_ticket(request, ticket_id):
     return render(request, 'review/edit_ticket.html', context=context)
 
 
+@login_required
 def feed(request):
     reviews = get_users_viewable_reviews(request.user)
     # returns queryset of reviews
@@ -101,10 +104,49 @@ def feed(request):
 
 @login_required
 def follow_users(request):
-    form = forms.FollowUsersForm(instance=request.user)
+    subscriber = UserFollows.objects.filter(followed_user=request.user)
+    all_follow = UserFollows.objects.filter(user=request.user)
+    form = forms.FollowUsersForm()
+    message = ''
     if request.method == 'POST':
-        form = forms.FollowUsersForm(request.POST, instance=request.user)
+        form = forms.FollowUsersForm(request.POST)
+
         if form.is_valid():
-            UserFollows.objects.create(user=request.user,  followed_user=followed_user)
+            try:
+                followed_user = User.objects.get(username=request.POST['followed_user'])
+                if request.user == followed_user:
+                    message = 'Vous ne pouvez pas vous abonner'
+                else:
+                    try:
+                        UserFollows.objects.create(user=request.user, followed_user=followed_user)
+                        message = f'Vous suivez {followed_user}'
+
+                    except IntegrityError:
+                        message = f'Vous êtes déjà abonné à {followed_user}'
+
+            except User.DoesNotExist:
+                message = "L'utilisateur n'exsite pas"
+
+    context = {
+        'form': form,
+        'message': message,
+        'follows': all_follow,
+        'subscriber': subscriber,
+    }
+    return render(request, 'review/subscription.html', context)
+
+
+@login_required
+def unfollow(request, user_follow_id):
+    sub = get_object_or_404(UserFollows, id=user_follow_id)
+    print(sub)
+    unsub = forms.Unfollow()
+    if request.method == 'POST':
+        unsub = forms.DeleteContentForm(request.POST)
+        if unsub.is_valid():
+            sub.delete()
             return redirect('home')
-    return render(request, 'review/subscription.html', context={'form': form})
+    context = {
+        'unsub': unsub,
+    }
+    return render(request, 'review/unfollow.html', context)

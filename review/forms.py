@@ -2,6 +2,7 @@ from django import forms
 from . import models
 from authentication.models import UserFollows
 
+
 class TicketForm(forms.ModelForm):
     title = forms.CharField(max_length=128, label='Titre',
                             widget=forms.TextInput(attrs={'class': "create_ticket_forms create_ticket_forms_title"}))
@@ -39,7 +40,9 @@ class DeleteContentForm(forms.Form):
     delete_content = forms.BooleanField(widget=forms.HiddenInput, initial=True)
 
 
-class FollowUsersForm(forms.ModelForm):
-    class Meta:
-        model = UserFollows
-        fields = ['followed_user']
+class FollowUsersForm(forms.Form):
+    followed_user = forms.CharField(label='', widget=forms.TextInput(attrs={'class': "subscription_search"}))
+
+
+class Unfollow(forms.Form):
+    remove_follow = forms.BooleanField(widget=forms.HiddenInput, initial=True)
