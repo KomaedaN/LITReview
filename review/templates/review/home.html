@@ -9,27 +9,18 @@
             <a href="{% url 'create_ticket' %}"><button class="home_btn">Demander une critique</button></a>
             <a href="{% url 'create_review' %}"><button class="home_btn">Créer une critique</button></a>
         </div>
-        {% for tickets in ticket %}
-        <a href="{% url 'view_ticket' tickets.id %}" class="link_decoration">
-            <div class="home_review">
-                <div class="home_time">
-                    <h2>{{ tickets.user }} a demandé une critique</h2>
-                    <p>{{ tickets.time_created }}</p>
-                </div>
-                <h2>{{ tickets.title }}</h2>
-                {% if tickets.description %}
-                    <h2>{{ tickets.description }}</h2>
-                {% endif %}
-                {% if tickets.image %}
-                    <img src="{{ tickets.image }}" alt="bug">
-                {% endif %}
-            </div>
-        </a>
+
+        {% for post in posts %}
+            {% if post.content_type == 'TICKET' %}
+                {% include './partials/ticket_snippet.html' %}
+            {% elif post.content_type == 'REVIEW' %}
+                {% include './partials/review_snippet.html' %}
+            {% endif %}
         {% endfor %}
+
     </div>
 
     <div></div>
 </section>
 
-{% include 'review/feed.html' with ticket=instance %}
 {% endblock content %}

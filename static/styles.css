@@ -165,7 +165,23 @@ input {
 }
 
 .subscription_follow{
-    border: solid;
+    border: solid 1px;
     margin-bottom: 2rem;
     border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.subscription_delete{
+    height: 100%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.subscription_form_delete{
+    margin: 0;
+}
+
+.subscription_follow_title{
+    margin-left: 1rem;
 }

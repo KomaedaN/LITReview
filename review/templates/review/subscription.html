@@ -10,27 +10,36 @@
             <button type="submit" class="subscription_btn">Suivre</button>
         </form>
 
-        <h2 class="subscription_title">Abonnements</h2>
+        <h1>{{ message }}</h1>
+
+        {% if follows %}
+            <h2 class="subscription_title">Abonnements</h2>
+        {% endif %}
         {% for follow in follows %}
         <div class="subscription_follow">
             <h1 class="subscription_follow_title">{{ follow.followed_user }}</h1>
-            <a href="{% url 'unfollow' follow.id %}">
-                <button type="button">Supprimer</button>
-            </a>
+            <form method="post" action="{% url 'unfollow' %}" class="subscription_form_delete">
+                {{ unsub.as_p }}
+                {% csrf_token %}
+                <button type="submit" value="{{ follow.id }}"
+                        name="user_followed_id" class="subscription_delete">Supprimer
+                </button>
+            </form>
 
         </div>
         {% endfor %}
 
-        <h2 class="subscription_title">Abonnés</h2>
+        {% if subscriber %}
+            <h2 class="subscription_title">Abonnés</h2>
+        {% endif %}
         {% for subscribers in subscriber %}
         <div class="subscription_follow">
-            <h1>{{ subscribers.user }}</h1>
+            <h1 class="subscription_follow_title">{{ subscribers.user }}</h1>
         </div>
         {% endfor %}
-
-        <h1>{{ message }}</h1>
     </div>
     <div></div>
-
+<a href="{% url 'home' %}"><button type="button">Retour</button></a>
 </section>
+
 {% endblock content %}

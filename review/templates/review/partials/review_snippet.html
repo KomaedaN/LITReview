@@ -1,0 +1,16 @@
+
+<div class="home_review">
+    <div class="home_time">
+        <h2>{{ post.user }} a demandé une critique</h2
+        ><p>{{ post.time_created }}</p>
+    </div>
+    <h2>{{ post.headline }}</h2>
+    <h3>Note : {{ post.rating }}</h3>
+    {% if post.body %}
+    <h2>{{ post.body }}</h2>
+    {% endif %}
+    {% if post.ticket %}
+    <h1>tet</h1>
+    {% endif %}
+</div>
+

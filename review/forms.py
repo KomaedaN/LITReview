@@ -45,4 +45,4 @@ class FollowUsersForm(forms.Form):
 
 
 class Unfollow(forms.Form):
-    remove_follow = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+    remove_follow = forms.BooleanField(widget=forms.HiddenInput(attrs={'name': 'user_followed_id'}), initial=True)

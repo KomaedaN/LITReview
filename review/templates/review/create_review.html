@@ -7,12 +7,13 @@
         <div>
             <h2>Livre / Article</h2>
             {{ ticket_form.as_p }}
+            {% csrf_token %}
         </div>
 
         <div class="create_review_review">
         <h2>Critique</h2>
-        {{ review_form.as_p }}
-        {% csrf_token %}
+            {{ review_form.as_p }}
+            {% csrf_token %}
         <div class="align_end">
             <a href="{% url 'home' %}"><button type="button">Retour</button></a>
             <button type="submit" >Publier</button>

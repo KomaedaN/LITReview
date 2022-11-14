@@ -14,7 +14,7 @@
                 <h2>{{ ticket.description }}</h2>
             {% endif %}
             {% if ticket.image %}
-                <img src="{{ ticket.image }}" alt="bug">
+                <img src="{{ ticket.image.url }}" alt="bug">
             {% endif %}
         </div>
         <a href="{% url 'home' %}"><button type="button">Retour</button></a>
