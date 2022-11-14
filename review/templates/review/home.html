@@ -11,10 +11,14 @@
         </div>
 
         {% for post in posts %}
-            {% if post.content_type == 'TICKET' %}
-                {% include './partials/ticket_snippet.html' %}
-            {% elif post.content_type == 'REVIEW' %}
+
+            {% if post.content_type == 'REVIEW' %}
                 {% include './partials/review_snippet.html' %}
+            {% endif %}
+            {% if post.content_type == 'TICKET' %}
+                {% if post not in ticket_id %}
+                    {% include './partials/ticket_snippet.html' %}
+                {% endif %}
             {% endif %}
         {% endfor %}
 

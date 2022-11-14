@@ -13,6 +13,10 @@ def home(request):
     # review = models.Review.objects.all()
     reviews = reviews.annotate(content_type=Value('REVIEW', CharField()))
     # returns queryset of tickets
+    ticket_id = []
+    for i in reviews:
+        review = i.ticket
+        ticket_id.append(review)
     tickets = get_users_viewable_tickets(request)
 
     tickets = tickets.annotate(content_type=Value('TICKET', CharField()))
@@ -22,7 +26,7 @@ def home(request):
         key=lambda post: post.time_created,
         reverse=True
     )
-    return render(request, 'review/home.html', {'posts': posts})
+    return render(request, 'review/home.html', {'posts': posts, 'ticket_id': ticket_id})
 
 
 @login_required
