@@ -1,7 +1,11 @@
 <a href="{% url 'view_ticket' post.id %}" class="link_decoration">
     <div class="home_review">
         <div class="home_time">
+            {% if post.user == user %}
+                <h2>Vous avez demandé une critique</h2>
+            {% else %}
             <h2>{{ post.user }} a demandé une critique</h2>
+            {% endif %}
             <p>{{ post.time_created }}</p>
         </div>
         <h2>{{ post.title }}</h2>
@@ -11,6 +15,8 @@
         {% if post.image %}
             <img src="{{ post.image.url }}" alt="bug">
         {% endif %}
-        <a href="{% url 'answer_review' post.id%}"><button class="home_btn">Créer une critique</button></a>
+        <div class="answer_ticket_btn">
+            <a href="{% url 'answer_review' post.id%}"><button class="home_btn">Créer une critique</button></a>
+        </div>
     </div>
 </a>

@@ -6,7 +6,11 @@
     <div>
         <div class="home_review">
             <div class="home_time">
-                <h2>{{ ticket.user }} a demandé une critique</h2>
+                {% if ticket.user == user %}
+                    <h2>Vous avez demandé une critique</h2>
+                {% else %}
+                    <h2>{{ ticket.user }} a demandé une critique</h2>
+                {% endif %}
                 <p>{{ ticket.time_created }}</p>
             </div>
             <h2>{{ ticket.title }}</h2>

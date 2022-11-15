@@ -55,6 +55,15 @@ input {
     margin-top: 2rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.home_review_ticket_create{
+    border: solid 2px;
+    margin-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
 }
 
 .home_time {
@@ -193,4 +202,16 @@ input {
     padding-right: 1rem;
     padding-bottom: 1rem;
     margin-bottom: 0.8rem;
+}
+
+.create_review_content_ticket {
+    border: solid 2px;
+    padding: 1rem;
+    border-top: none;
+}
+
+.answer_ticket_btn{
+    text-align: end;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
 }

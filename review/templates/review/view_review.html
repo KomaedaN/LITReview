@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="ticket_title">Ticket</h1>
+<section class="home_section">
+    <div></div>
+    <div>
+        <div class="home_review">
+            <div class="home_time">
+                {% if review.user == user %}
+                    <h2>Vous avez posté une critique</h2>
+                {% else %}
+                    <h2>{{ review.user }} a posté une critique</h2>
+                {% endif %}
+                <p>{{ review.time_created }}</p>
+            </div>
+            <h2>{{ review.headline }} - {{ review.rating }} étoile(s)</h2>
+            {% if review.body %}
+                <h2>{{ review.body }}</h2>
+            {% endif %}
+        </div>
+        <a href="{% url 'home' %}"><button type="button">Retour</button></a>
+        {% if user == review.user %}
+            <a href="{% url 'edit_review' review.id %}"><button type="button">Modifier</button></a>
+        {% endif %}
+    </div>
+    <div></div>
+</section>
+{% endblock content %}
