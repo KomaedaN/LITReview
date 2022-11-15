@@ -11,7 +11,6 @@
         </div>
 
         {% for post in posts %}
-
             {% if post.content_type == 'REVIEW' %}
                 {% include './partials/review_snippet.html' %}
             {% endif %}

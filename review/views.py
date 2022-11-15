@@ -118,7 +118,7 @@ def answer_review(request, ticket_id):
 
     context = {
         'ticket': ticket,
-        'review_form': review_form
+        'review_form': review_form,
     }
     return render(request, 'review/answer_review.html', context=context)
 

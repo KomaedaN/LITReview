@@ -185,3 +185,12 @@ input {
 .subscription_follow_title{
     margin-left: 1rem;
 }
+
+.home_review_ticket{
+    border: solid 2px;
+    margin-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0.8rem;
+}

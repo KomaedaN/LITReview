@@ -1,16 +1,24 @@
-
 <div class="home_review">
     <div class="home_time">
         <h2>{{ post.user }} a publié une critique</h2>
         <p>{{ post.time_created }}</p>
     </div>
-    <h2>{{ post.headline }}</h2>
-    <h3>Note : {{ post.rating }}</h3>
+    <h2>{{ post.headline }} - {{ post.rating }} étoile(s)</h2>
     {% if post.body %}
-    <h2>{{ post.body }}</h2>
+        <h2>{{ post.body }}</h2>
     {% endif %}
+
     {% if post.ticket %}
-    <h1>{{post.ticket}}</h1>
+        <div class="home_review_ticket">
+        <div class="home_time">
+            <h2>Ticket - {{ post.ticket.user }}</h2>
+            <p>{{ post.ticket.time_created }}</p>
+        </div>
+        <h2>{{ post.ticket.title }}</h2>
+        {% if post.ticket.image %}
+            <img src="{{ post.ticket.image.url }}" alt="bug">
+        {% endif %}
+    </div>
     {% endif %}
 </div>
 
