@@ -10,9 +10,9 @@
         <h1 class="base_title">LITReview</h1>
         {% if user.is_authenticated %}
         <div class="base_nav">
-            <a href="{% url 'home' %}" class="nav-margin-right">Flux</a>
+            <a href="{% url 'feed' %}" class="nav-margin-right">Flux</a>
             <a href="{% url 'create_ticket' %}" class="nav-margin-right">Posts</a>
-            <a href="{% url 'subscription' %}">Abonnements</a>
+            <a href="{% url 'subscription' %}" class="nav-margin-right">Abonnements</a>
             <a href="{% url 'logout' %}" class="nav-margin-right">Se déconnecter</a>
         </div>
         {% endif %}

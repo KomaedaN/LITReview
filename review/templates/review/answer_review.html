@@ -17,16 +17,15 @@
             {% endif %}
         </div>
 
-
         <form class="create_review_content_ticket" method="post" enctype="multipart/form-data">
             <div>
                 <h2>Critique</h2>
                     {{ review_form.as_p }}
                     {% csrf_token %}
-            <div class="align_end">
-                <a href="{% url 'home' %}"><button type="button">Retour</button></a>
-                <button type="submit" >Publier</button>
-            </div>
+                <div class="align_end">
+                    <a href="{% url 'feed' %}"><button type="button" class="home_btn">Retour</button></a>
+                    <button type="submit" class="home_btn">Publier</button>
+                </div>
             </div>
         </form>
     </div>

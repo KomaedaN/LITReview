@@ -8,8 +8,8 @@
             {{ edit_form.as_p }}
             {% csrf_token %}
             <div class="align_end">
-                <a href="{% url 'home' %}"><button type="button">Retour</button></a>
-                <button type="submit" >Publier</button>
+                <a href="{% url 'feed' %}"><button type="button">Retour</button></a>
+                <button type="submit" class="home_btn">Publier</button>
             </div>
         </form>
 
@@ -17,7 +17,7 @@
         <form method="post">
             {{ delete_form }}
             {% csrf_token %}
-            <button type="submit">Supprimer</button>
+            <button type="submit" class="home_btn">Supprimer</button>
         </form>
     </div>
     <div></div>

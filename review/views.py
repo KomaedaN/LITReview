@@ -5,20 +5,18 @@ from itertools import chain
 from django.db.models import CharField, Value, Q
 from authentication.models import UserFollows, User
 from django.db import IntegrityError
+from django.utils.datastructures import MultiValueDictKeyError
 
 
 @login_required
-def home(request):
+def feed(request):
     reviews = get_users_viewable_reviews(request)
-    # review = models.Review.objects.all()
     reviews = reviews.annotate(content_type=Value('REVIEW', CharField()))
-    # returns queryset of tickets
     ticket_id = []
     for i in reviews:
         review = i.ticket
         ticket_id.append(review)
     tickets = get_users_viewable_tickets(request)
-
     tickets = tickets.annotate(content_type=Value('TICKET', CharField()))
 
     posts = sorted(
@@ -26,7 +24,7 @@ def home(request):
         key=lambda post: post.time_created,
         reverse=True
     )
-    return render(request, 'review/home.html', {'posts': posts, 'ticket_id': ticket_id})
+    return render(request, 'review/feed.html', {'posts': posts, 'ticket_id': ticket_id})
 
 
 @login_required
@@ -38,7 +36,7 @@ def ticket_upload(request):
             ticket = form.save(commit=False)
             ticket.user = request.user
             ticket.save()
-            return redirect('home')
+            return redirect('feed')
     return render(request, 'review/create_ticket.html', context={'form': form})
 
 
@@ -50,17 +48,14 @@ def review_upload(request):
         review_form = forms.ReviewForm(request.POST)
         ticket_form = forms.TicketForm(request.POST, request.FILES)
         if all([review_form.is_valid(), ticket_form.is_valid()]):
-            ticket = models.Ticket.objects.create(
-                user=request.user,
-                title=request.POST['title'],
-                description=request.POST['description'],
-                image=request.FILES['image'],
-            )
+            ticket = ticket_form.save(commit=False)
+            ticket.user = request.user
+            ticket.save()
             review = review_form.save(commit=False)
             review.user = request.user
             review.ticket = ticket
             review.save()
-            return redirect('home')
+            return redirect('feed')
     context = {
         'review_form': review_form,
         'ticket_form': ticket_form
@@ -92,12 +87,12 @@ def edit_ticket(request, ticket_id):
             edit_form = forms.TicketForm(request.POST, request.FILES, instance=ticket)
             if edit_form.is_valid():
                 edit_form.save()
-                return redirect('home')
+                return redirect('feed')
         if 'delete_content' in request.POST:
             delete_form = forms.DeleteContentForm(request.POST)
             if delete_form.is_valid():
                 ticket.delete()
-                return redirect('home')
+                return redirect('feed')
     context = {
         'edit_form': edit_form,
         'delete_form': delete_form,
@@ -115,12 +110,12 @@ def edit_review(request, review_id):
             edit_form = forms.ReviewForm(request.POST, request.FILES, instance=review)
             if edit_form.is_valid():
                 edit_form.save()
-                return redirect('home')
+                return redirect('feed')
         if 'delete_content' in request.POST:
             delete_form = forms.DeleteContentForm(request.POST)
             if delete_form.is_valid():
                 review.delete()
-                return redirect('home')
+                return redirect('feed')
     context = {
         'edit_form': edit_form,
         'delete_form': delete_form,
@@ -139,32 +134,13 @@ def answer_review(request, ticket_id):
             review.user = request.user
             review.ticket = ticket
             review.save()
-            return redirect('home')
+            return redirect('feed')
 
     context = {
         'ticket': ticket,
         'review_form': review_form,
     }
     return render(request, 'review/answer_review.html', context=context)
-
-
-@login_required
-def feed(request):
-    reviews = get_users_viewable_reviews(request.user)
-    # returns queryset of reviews
-    reviews = reviews.annotate(content_type=Value('REVIEW', CharField()))
-
-    tickets = get_users_viewable_tickets(request.user)
-    # returns queryset of tickets
-    tickets = tickets.annotate(content_type=Value('TICKET', CharField()))
-
-    # combine and sort the two types of posts
-    posts = sorted(
-        chain(reviews, tickets),
-        key=lambda post: post.time_created,
-        reverse=True
-    )
-    return render(request, 'feed.html', context={'posts': posts})
 
 
 @login_required
@@ -245,6 +221,3 @@ def user_follow(request):
         all_follows.append(follow.followed_user)
     all_follows.append(user)
     return all_follows
-
-
-

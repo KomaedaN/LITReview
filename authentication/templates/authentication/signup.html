@@ -4,11 +4,27 @@
         <div></div>
         <div>
             <h2>Inscription</h2>
+            {% if form.errors %}
+                {{ form.errors }}
+            {% endif %}
             <form method="post">
-                {{ form.as_p }}
                 {% csrf_token %}
-                <a href="{% url 'login' %}"><button type="button">Retour</button></a>
-                <button type="submit" >s'inscrire</button>
+                <div class="signup_from">
+                    <p>Pseudo :</p>
+                    {{ form.username }}
+                </div>
+
+                <div class="signup_from">
+                    <p>Mot de passe :</p>
+                    {{ form.password1 }}
+                </div>
+
+                <div class="signup_from">
+                    <p>Confirmation du mot de passe :</p>
+                    {{ form.password2 }}
+                </div>
+                <a href="{% url 'login' %}"><button type="button" class="home_btn">Retour</button></a>
+                <button type="submit" class="home_btn">s'inscrire</button>
             </form>
         </div>
         <div></div>

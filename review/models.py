@@ -27,6 +27,7 @@ class Ticket(models.Model):
         image.thumbnail(self.IMAGE_MAX_SIZE)
         image.save(self.image.path)
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        self.resize_image()
+    if image is True:
+        def save(self, *args, **kwargs):
+            super().save(*args, **kwargs)
+            self.resize_image()

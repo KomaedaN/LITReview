@@ -24,6 +24,7 @@ input {
 
 .nav-margin-right {
     margin-right: 2.5rem;
+    color: black;
 }
 
 .login {
@@ -83,6 +84,9 @@ input {
     padding-right: 3rem;
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
+    cursor: pointer;
+    border: solid 1px;
+    background-color: #bfbbbb;
 }
 
 .signup_grid{
@@ -171,6 +175,9 @@ input {
 
 .subscription_btn {
     width: 5rem;
+    cursor: pointer;
+    border: solid 1px;
+    background-color: #bfbbbb;
 }
 
 .subscription_follow{
@@ -185,6 +192,9 @@ input {
     height: 100%;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    cursor: pointer;
+    border: solid 1px;
+    background-color: #bfbbbb;
 }
 
 .subscription_form_delete{
@@ -214,4 +224,18 @@ input {
     text-align: end;
     margin-bottom: 1rem;
     margin-top: 0.5rem;
+}
+
+.signup_from{
+    margin-bottom: 2rem;
+}
+
+.errorlist{
+    list-style: none;
+    padding: 0;
+    color: red;
+}
+
+.errorlist li{
+    margin-top: 1rem;
 }

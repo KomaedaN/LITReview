@@ -25,7 +25,6 @@
                         name="user_followed_id" class="subscription_delete">Supprimer
                 </button>
             </form>
-
         </div>
         {% endfor %}
 
@@ -39,7 +38,11 @@
         {% endfor %}
     </div>
     <div></div>
-<a href="{% url 'home' %}"><button type="button">Retour</button></a>
+<a href="{% url 'feed' %}">
+    <div class="base_nav">
+        <button type="button" class="home_btn">Retour</button>
+    <div>
+</a>
 </section>
 
 {% endblock content %}

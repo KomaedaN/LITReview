@@ -18,9 +18,9 @@
                 <h2>{{ review.body }}</h2>
             {% endif %}
         </div>
-        <a href="{% url 'home' %}"><button type="button">Retour</button></a>
+        <a href="{% url 'feed' %}"><button type="button" class="home_btn">Retour</button></a>
         {% if user == review.user %}
-            <a href="{% url 'edit_review' review.id %}"><button type="button">Modifier</button></a>
+            <a href="{% url 'edit_review' review.id %}"><button type="button" class="home_btn">Modifier</button></a>
         {% endif %}
     </div>
     <div></div>
