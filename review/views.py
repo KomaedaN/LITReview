@@ -5,7 +5,7 @@ from itertools import chain
 from django.db.models import CharField, Value, Q
 from authentication.models import UserFollows, User
 from django.db import IntegrityError
-from django.utils.datastructures import MultiValueDictKeyError
+
 
 
 @login_required

@@ -1,22 +1,31 @@
-<a href="{% url 'view_ticket' post.id %}" class="link_decoration">
-    <div class="home_review">
-        <div class="home_time">
-            {% if post.user == user %}
-                <h2>Vous avez demandé une critique</h2>
-            {% else %}
-            <h2>{{ post.user }} a demandé une critique</h2>
-            {% endif %}
-            <p>{{ post.time_created }}</p>
+<div class="home_ticket">
+    <a href="{% url 'view_ticket' post.id %}" class="link_decoration">
+        <div>
+            <div class="home_time">
+                {% if post.user == user %}
+                    <p class="ticket_title_margin">Vous avez demandé une critique</p>
+                {% else %}
+                    <p class="ticket_title_margin">{{ post.user }} a demandé une critique</p>
+                {% endif %}
+                <p class="ticket_title_margin">{{ post.time_created }}</p>
+            </div>
+
+            <div class="ticket_nav">
+                <div class="ticket_nav_content">
+                    <h1 class="ticket_title_center">{{ post.title }}</h1>
+                    <p>{{ post.description }}</p>
+                </div>
+
+                <div>
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="bug">
+                {% endif %}
+                </div>
+            </div>
         </div>
-        <h2>{{ post.title }}</h2>
-        {% if post.description %}
-            <h2>{{ post.description }}</h2>
-        {% endif %}
-        {% if post.image %}
-            <img src="{{ post.image.url }}" alt="bug">
-        {% endif %}
-        <div class="answer_ticket_btn">
-            <a href="{% url 'answer_review' post.id%}"><button class="home_btn">Créer une critique</button></a>
-        </div>
+    </a>
+
+    <div class="answer_ticket_btn">
+        <a href="{% url 'answer_review' post.id%}"><button class="home_btn">Créer une critique</button></a>
     </div>
-</a>
+</div>

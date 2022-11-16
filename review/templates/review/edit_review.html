@@ -3,12 +3,12 @@
 <h2 class="create_ticket_title">Modifier la critique</h2>
 <section class="create_ticket_section">
     <div></div>
-    <div>
+    <div class="edit_review_div">
         <form class="create_ticket_content" method="post" enctype="multipart/form-data">
             {{ edit_form.as_p }}
             {% csrf_token %}
             <div class="align_end">
-                <a href="{% url 'feed' %}"><button type="button">Retour</button></a>
+                <a href="{% url 'feed' %}"><button type="button" class="home_btn">Retour</button></a>
                 <button type="submit" class="home_btn">Publier</button>
             </div>
         </form>

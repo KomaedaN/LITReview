@@ -12,22 +12,32 @@
         {% if post.body %}
             <h2>{{ post.body }}</h2>
         {% endif %}
-        <a href="{% url 'view_ticket' post.ticket.id%}" class="link_decoration">
-        {% if post.ticket %}
-            <div class="home_review_ticket">
-                <div class="home_time">
-                    {% if post.ticket.user == user%}
-                        <h2>Ticket - Vous</h2>
-                    {% else %}
-                        <h2>Ticket - {{ post.ticket.user }}</h2>
-                    {% endif %}
-                    <p>{{ post.ticket.time_created }}</p>
+
+        <div class="home_ticket">
+        <a href="{% url 'view_ticket' post.ticket.id %}" class="link_decoration">
+        <div>
+            <div class="home_time">
+                {% if post.ticket.user == user %}
+                    <p class="ticket_title_margin">Vous avez demandé une critique</p>
+                {% else %}
+                    <p class="ticket_title_margin">{{ post.ticket.user }} a demandé une critique</p>
+                {% endif %}
+                <p class="ticket_title_margin">{{ post.ticket.time_created }}</p>
+            </div>
+
+            <div class="ticket_nav">
+                <div class="ticket_nav_content">
+                    <h1 class="ticket_title_center">{{ post.ticket.title }}</h1>
+                    <p>{{ post.ticket.description }}</p>
                 </div>
-                <h2>{{ post.ticket.title }}</h2>
+
+                <div>
                 {% if post.ticket.image %}
                     <img src="{{ post.ticket.image.url }}" alt="bug">
                 {% endif %}
+                </div>
             </div>
-        {% endif %}
+        </div>
+    </a>
     </div>
 </a>
