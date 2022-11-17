@@ -1,7 +1,7 @@
 body{
     margin: 0;
-    background-color: #181717;
-    font-family: "Abel", sans-serif;
+    background-color: rgb(247, 180, 180, 22%);
+    font-family: "Malgun Gothic", sans-serif;
 }
 
 input {
@@ -16,15 +16,12 @@ input {
     text-align: end;
 }
 
-.signup_color{
-    color: white;
-}
-
 .ticket_nav{
     display: grid;
     grid-template-columns: 4fr 3fr;
     text-align: end;
     grid-column-gap: 1rem;
+    padding: 1.2rem;
 }
 
 .ticket_nav_content {
@@ -33,11 +30,14 @@ input {
 }
 
 .ticket_title_margin{
-    margin-top: 0;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .title_color {
-    color: white;
+    color: black;
 }
 
 .nav-grid {
@@ -46,12 +46,12 @@ input {
     height: 5em;
     align-items: center;
     border-bottom: 0.1rem solid;
-    color: white;
+    color: black;
 }
 
 .nav-margin-right {
     margin-right: 2.5rem;
-    color: white;
+    color: black;
 }
 
 .login {
@@ -79,25 +79,22 @@ input {
 }
 
 .home_review {
-    border: solid 2px;
+    border: solid 1px;
     margin-top: 2rem;
     padding-left: 1rem;
     padding-right: 1rem;
     margin-bottom: 1rem;
     border-radius: 5px;
-    color: white;
-    background-color: #343232;
+    background-color: #f3cba3;
+    box-shadow: 0px 0px 4px 1px black;
 }
 
 .home_ticket {
-    border: solid 2px;
     margin-top: 2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
     margin-bottom: 1rem;
     border-radius: 5px;
-    color: white;
-    background-color: #344966;
+    background-color: #f9f4f4;
+    box-shadow: 0px 0px 4px 1px black;
 }
 
 .home_review_ticket_create{
@@ -106,18 +103,32 @@ input {
     padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 1rem;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    background-color: #f9f4f4;
 }
 
 .home_time {
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
+    background-color: rgb(94 91 92 / 15%);
 }
 
 .ticket_title_center{
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2rem;
+}
+
+.ticket_img{
+    border: solid 2px;
+    border-color: black;
+    border-radius: 0.2rem;
+}
+
+.padding_ticket {
+    padding-bottom: 1rem;
 }
 
 .home_btn_grid{
@@ -128,13 +139,29 @@ input {
 }
 
 .home_btn {
-    padding-left: 3rem;
-    padding-right: 3rem;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
     cursor: pointer;
-    border: solid 1px;
-    background-color: #bfbbbb;
+    background-color: #0079d3;
+    border-radius: 20px;
+    color: white;
+    font-size: 1.1rem;
+    margin-right: 1rem;
+    border: none;
+}
+
+.home_btn:hover {
+    transform: scale(1.05);
+    transition-duration: 0.15s;
+    box-shadow: 0px 0px 2px 1px black;
+}
+
+.nav_bottom{
+    background-color: rgb(94 91 92 / 15%);
+    padding-bottom: 1.8rem;
+    margin-top: 1rem;
 }
 
 .signup_grid{
@@ -148,7 +175,6 @@ input {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     word-break: break-word;
-    color: white;
 }
 
 .create_ticket_forms {
@@ -163,7 +189,6 @@ input {
 
 .create_ticket_title{
     text-align: center;
-    color: white;
 }
 
 .align_end {
@@ -173,6 +198,8 @@ input {
 .create_review_content {
     border: solid;
     padding: 1rem;
+    border-radius: 1rem;
+    background-color: #cdcdcd;
 }
 
 .create_review_review{
@@ -188,12 +215,11 @@ input {
 
 .link_decoration {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .ticket_title {
     text-align: center;
-    color: white;
 }
 
 .subscription_page {
@@ -202,10 +228,13 @@ input {
     word-break: break-word;
 }
 
+.btn_edit{
+    text-align: end;
+}
+
 .subscription_title {
     text-align: center;
     margin-top: 4rem;
-    color: white;
 }
 
 .subscription_form {
@@ -238,8 +267,7 @@ input {
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
-    color: white;
-    background-color: #343232;
+    background-color: #f9f4f4;
 }
 
 .subscription_delete{
@@ -276,12 +304,13 @@ input {
     border: solid 2px;
     padding: 1rem;
     border-top: none;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color: #f9f4f4;
 }
 
 .answer_ticket_btn{
     text-align: end;
-    margin-bottom: 1rem;
-    margin-top: 0.5rem;
 }
 
 .signup_from{
@@ -306,4 +335,15 @@ input {
 .create_ticket_content {
     border: solid 2px;
     padding: 1rem;
+    background-color: #cdcdcd;
+    border-radius: 1rem;
 }
+
+.delete_ticket{
+    text-align: end;
+}
+
+.red_btn{
+    background-color: #b92f2f !important;
+}
+

@@ -67,14 +67,14 @@ def review_upload(request):
 def view_ticket(request, ticket_id):
     ticket = get_object_or_404(models.Ticket, id=ticket_id)
     user = request.user
-    return render(request, 'review/view_ticket.html', {'ticket': ticket, 'user': user})
+    return render(request, 'review/view_ticket.html', {'post': ticket, 'user': user})
 
 
 @login_required
 def view_review(request, review_id):
     review = get_object_or_404(models.Review, id=review_id)
     user = request.user
-    return render(request, 'review/view_review.html', {'review': review, 'user': user})
+    return render(request, 'review/view_review.html', {'post': review, 'user': user})
 
 
 @login_required

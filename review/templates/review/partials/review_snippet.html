@@ -2,42 +2,43 @@
     <div class="home_review">
         <div class="home_time">
             {% if post.user == user %}
-                <h2>Vous avez posté une critique</h2>
+                <p class="ticket_title_margin">Vous avez posté une critique</p>
             {% else %}
-                <h2>{{ post.user }} a publié une critique</h2>
+                <p class="ticket_title_margin">{{ post.user }} a publié une critique</p>
             {% endif %}
-            <p>{{ post.time_created }}</p>
+            <p class="ticket_title_margin">{{ post.time_created }}</p>
         </div>
-        <h2>{{ post.headline }} - {{ post.rating }} étoile(s)</h2>
+        <h1>{{ post.headline }}</h1>
         {% if post.body %}
-            <h2>{{ post.body }}</h2>
+            <p>{{ post.body }}</p>
         {% endif %}
-
-        <div class="home_ticket">
-        <a href="{% url 'view_ticket' post.ticket.id %}" class="link_decoration">
-        <div>
-            <div class="home_time">
-                {% if post.ticket.user == user %}
-                    <p class="ticket_title_margin">Vous avez demandé une critique</p>
-                {% else %}
-                    <p class="ticket_title_margin">{{ post.ticket.user }} a demandé une critique</p>
-                {% endif %}
-                <p class="ticket_title_margin">{{ post.ticket.time_created }}</p>
-            </div>
-
-            <div class="ticket_nav">
-                <div class="ticket_nav_content">
-                    <h1 class="ticket_title_center">{{ post.ticket.title }}</h1>
-                    <p>{{ post.ticket.description }}</p>
+        <p>Note : {{ post.rating }}/5</p>
+        <div class="home_ticket padding_ticket">
+            <a href="{% url 'view_ticket' post.ticket.id %}" class="link_decoration">
+            <div>
+                <div class="home_time">
+                    {% if post.ticket.user == user %}
+                        <p class="ticket_title_margin">Ticket - Créé par Vous</p>
+                    {% else %}
+                        <p class="ticket_title_margin">Ticket - Créé par {{ post.ticket.user }}</p>
+                    {% endif %}
+                    <p class="ticket_title_margin">{{ post.ticket.time_created }}</p>
                 </div>
 
-                <div>
-                {% if post.ticket.image %}
-                    <img src="{{ post.ticket.image.url }}" alt="bug">
-                {% endif %}
+                <div class="ticket_nav">
+                    <div class="ticket_nav_content">
+                        <h1 class="ticket_title_center">{{ post.ticket.title }}</h1>
+                        <p>{{ post.ticket.description }}</p>
+                    </div>
+
+                    <div>
+                    {% if post.ticket.image %}
+                        <img src="{{ post.ticket.image.url }}" alt="bug" class="ticket_img">
+                    {% endif %}
+                    </div>
                 </div>
             </div>
+            </a>
         </div>
-    </a>
     </div>
 </a>

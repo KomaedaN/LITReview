@@ -1,27 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1 class="ticket_title">Ticket</h1>
+<h1 class="ticket_title">Review</h1>
 <section class="home_section">
     <div></div>
     <div>
         <div class="home_review">
             <div class="home_time">
-                {% if review.user == user %}
-                    <h2>Vous avez posté une critique</h2>
+                {% if post.user == user %}
+                    <p class="ticket_title_margin">Vous avez posté une critique</p>
                 {% else %}
-                    <h2>{{ review.user }} a posté une critique</h2>
+                    <p class="ticket_title_margin">{{ post.user }} a publié une critique</p>
                 {% endif %}
-                <p>{{ review.time_created }}</p>
+                <p class="ticket_title_margin">{{ post.time_created }}</p>
             </div>
-            <h2>{{ review.headline }} - {{ review.rating }} étoile(s)</h2>
-            {% if review.body %}
-                <h2>{{ review.body }}</h2>
+            <h1>{{ post.headline }}</h1>
+            {% if post.body %}
+                <p>{{ post.body }}</p>
+            {% endif %}
+            <p>Note : {{ post.rating }}/5</p>
+        </div>
+        <div class="btn_edit">
+            <a href="{% url 'feed' %}"><button type="button" class="home_btn">Retour</button></a>
+            {% if user == post.user %}
+                <a href="{% url 'edit_review' post.id %}"><button type="button" class="home_btn">Modifier</button></a>
             {% endif %}
         </div>
-        <a href="{% url 'feed' %}"><button type="button" class="home_btn">Retour</button></a>
-        {% if user == review.user %}
-            <a href="{% url 'edit_review' review.id %}"><button type="button" class="home_btn">Modifier</button></a>
-        {% endif %}
     </div>
     <div></div>
 </section>

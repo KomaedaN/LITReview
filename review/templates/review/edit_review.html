@@ -3,7 +3,7 @@
 <h2 class="create_ticket_title">Modifier la critique</h2>
 <section class="create_ticket_section">
     <div></div>
-    <div class="edit_review_div">
+    <div>
         <form class="create_ticket_content" method="post" enctype="multipart/form-data">
             {{ edit_form.as_p }}
             {% csrf_token %}
@@ -13,12 +13,14 @@
             </div>
         </form>
 
-        <h3>Supprimer le ticket</h3>
-        <form method="post">
-            {{ delete_form }}
-            {% csrf_token %}
-            <button type="submit" class="home_btn">Supprimer</button>
-        </form>
+        <div class="delete_ticket">
+            <h3>Supprimer la critique</h3>
+            <form method="post">
+                {{ delete_form }}
+                {% csrf_token %}
+                <button type="submit" class="home_btn red_btn">Supprimer</button>
+            </form>
+        </div>
     </div>
     <div></div>
 </section>

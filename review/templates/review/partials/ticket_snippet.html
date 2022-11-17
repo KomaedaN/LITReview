@@ -18,7 +18,7 @@
 
                 <div>
                 {% if post.image %}
-                    <img src="{{ post.image.url }}" alt="bug">
+                    <img src="{{ post.image.url }}" alt="bug" class="ticket_img">
                 {% endif %}
                 </div>
             </div>
@@ -28,4 +28,5 @@
     <div class="answer_ticket_btn">
         <a href="{% url 'answer_review' post.id%}"><button class="home_btn">Créer une critique</button></a>
     </div>
+    <div class="nav_bottom"></div>
 </div>

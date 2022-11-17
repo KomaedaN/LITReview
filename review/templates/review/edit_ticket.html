@@ -13,12 +13,14 @@
             </div>
         </form>
 
-        <h3>Supprimer le ticket</h3>
-        <form method="post">
-            {{ delete_form }}
-            {% csrf_token %}
-            <button type="submit" class="home_btn">Supprimer</button>
-        </form>
+        <div class="delete_ticket">
+            <h3>Supprimer le ticket</h3>
+            <form method="post">
+                {{ delete_form }}
+                {% csrf_token %}
+                <button type="submit" class="home_btn red_btn">Supprimer</button>
+            </form>
+        </div>
     </div>
     <div></div>
 </section>
