@@ -7,7 +7,6 @@ from authentication.models import UserFollows, User
 from django.db import IntegrityError
 
 
-
 @login_required
 def feed(request):
     reviews = get_users_viewable_reviews(request)
@@ -24,7 +23,8 @@ def feed(request):
         key=lambda post: post.time_created,
         reverse=True
     )
-    return render(request, 'review/feed.html', {'posts': posts, 'ticket_id': ticket_id})
+    return render(request, 'review/feed.html', {'posts': posts,
+                                                'ticket_id': ticket_id})
 
 
 @login_required
@@ -67,14 +67,16 @@ def review_upload(request):
 def view_ticket(request, ticket_id):
     ticket = get_object_or_404(models.Ticket, id=ticket_id)
     user = request.user
-    return render(request, 'review/view_ticket.html', {'post': ticket, 'user': user})
+    return render(request, 'review/view_ticket.html', {'post': ticket,
+                                                       'user': user})
 
 
 @login_required
 def view_review(request, review_id):
     review = get_object_or_404(models.Review, id=review_id)
     user = request.user
-    return render(request, 'review/view_review.html', {'post': review, 'user': user})
+    return render(request, 'review/view_review.html', {'post': review,
+                                                       'user': user})
 
 
 @login_required
@@ -84,7 +86,9 @@ def edit_ticket(request, ticket_id):
     delete_form = forms.DeleteContentForm()
     if request.method == 'POST':
         if 'edit_ticket' in request.POST:
-            edit_form = forms.TicketForm(request.POST, request.FILES, instance=ticket)
+            edit_form = forms.TicketForm(request.POST,
+                                         request.FILES,
+                                         instance=ticket)
             if edit_form.is_valid():
                 edit_form.save()
                 return redirect('feed')
@@ -107,7 +111,9 @@ def edit_review(request, review_id):
     delete_form = forms.DeleteContentForm()
     if request.method == 'POST':
         if 'edit_review' in request.POST:
-            edit_form = forms.ReviewForm(request.POST, request.FILES, instance=review)
+            edit_form = forms.ReviewForm(request.POST,
+                                         request.FILES,
+                                         instance=review)
             if edit_form.is_valid():
                 edit_form.save()
                 return redirect('feed')
@@ -155,12 +161,14 @@ def follow_users(request):
 
         if form.is_valid():
             try:
-                followed_user = User.objects.get(username=request.POST['followed_user'])
+                followed_user = User.objects.get(
+                    username=request.POST['followed_user'])
                 if request.user == followed_user:
                     message = 'Vous ne pouvez pas vous abonner'
                 else:
                     try:
-                        UserFollows.objects.create(user=request.user, followed_user=followed_user)
+                        UserFollows.objects.create(user=request.user,
+                                                   followed_user=followed_user)
                         message = f'Vous suivez {followed_user}'
 
                     except IntegrityError:
